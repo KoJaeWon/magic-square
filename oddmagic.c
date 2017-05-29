@@ -1,47 +1,43 @@
 #include<stdio.h>
 void main()
 {
-    int n, i, s, c, a[9][9] ;
+    int inputnumber,row, col, num;
+    int magicsquare[9][9] ;  
 
     printf("Enter  size of the magic square (OLY ODD)  ") ;
-    scanf("%d", &n) ;
-    if(n%2==0)
-    {
-        printf("magic square imposible");
+    scanf("%d", &inputnumber) ;
+    if(inputnumber%2==0)
+        printf("magic square is imposible");
 
-
-
-    }
     else
     {
-
-
-    printf("\nThe magic square for %d x %d is :\n\n", n, n) ;
-    s = (n + 1) / 2 ;
-    i = 1 ;
-    for(c = 1 ; c <= n * n ; c++)
-    {
-        a[i][s] = c ;
-        if(c % n == 0)
+     printf("\nThe magic square for %d x %d is :\n\n", inputnumber, inputnumber);
+     col=(inputnumber + 1) / 2 ;
+     row = 1 ;
+        
+     for(num = 1 ; num <= inputnumber *inputnumber ; num++)
+     {
+        magicsquare[row][col] = num ;
+        if(num % inputnumber == 0)
         {
-            i = i + 1 ;
-            goto loop ;
+            row += 1 ;
+          continue;
         }
-        if(i == 1)
-        i = n ;
+        if(row == 1)
+        row= inputnumber ;
         else
-        i = i - 1 ;
-        if(s == n)
-        s = 1;
+        row -= 1 ;
+        if(col == inputnumber)
+        col = 1;
         else
-        s = s + 1 ;
-        loop : ;
+        col += 1;
+        
     }
-    for (i = 1 ; i <= n ; i++)
+    for (row = 1 ; row <= inputnumber ; row++)
         {
-        for (s = 1 ; s <= n ; s++)
+        for (col = 1 ; col <= inputnumber ; col++)
         {
-            printf("%d\t", a[i][s]) ;
+            printf("%5d", magicsquare[row][col]) ;
         }
         printf("\n\n") ;
     }
